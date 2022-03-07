@@ -1,16 +1,19 @@
 
 def my_decorators(param):
-    print("check validation")
-    return param
-
+    def wrapper(*args):
+        if type(*args) == str and len(*args) > 5:
+            print(f"the argument checks the requirements")
+        else:
+            raise ValueError("the argument should be str and it should have more than 5 characters.")
+        return param(*args)
+    return wrapper
 
 
 @my_decorators
 def check(x):
-    if type(x) == str and len(x) > 5:
-        print(f"the argument {x} checks the requirements")
-    else:
-        raise ValueError("the argument should be str and it should have more than 5 characters.")
+    print("check validation")
 
 
-check("hello")
+check("hello there")
+# decorated_func = my_decorators(check("helloo"))
+# decorated_func()
