@@ -1,18 +1,19 @@
 
 def check_str(func):
     def wrapper(param):
-        if isinstance(param,str):
-            print("The argument is string.")
-        else:
-            raise ValueError("the argument should be str")
+        
         return func(param)
     return wrapper
 
 @check_str
 def check_length(param):
-    if len(param) > 5:
-        print("The argument is more than 5 characters.")
+    if isinstance(param,str):
+        if len(param) > 5:
+            print("The argument is more than 5 characters.")
+        else:
+            raise ValueError("the argument should have more than 5 characters.")
     else:
-        raise ValueError("the argument should have more than 5 characters.")
+        raise ValueError("the argument should be str")
+    
 
-check_length("85klwdm")
+check_length("hello!")
