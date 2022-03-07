@@ -13,16 +13,19 @@
 ################################
 def my_decorator(param):
     def wrapped(x):
-        if isinstance(param,str):
-            print("string")
-        return param(x)
+        print("string")
+        return param(x)  
     return wrapped
 
+
 @my_decorator
-def strLength(x):
+def strLength(x:str):
    if len(x) >= 5:
       print(" string is more than 5 characters")
    else:
       print("string should have more than 5 characters ")
 
-strLength("jjnnn") 
+
+strLength("sddddddd") 
+strLength("ee") 
+
