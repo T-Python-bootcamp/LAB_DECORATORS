@@ -1,6 +1,9 @@
 def my_decorator(param):
     def wrapped(string):
-        print("check the string")
+        if type(string)==str and len(string)>5:
+           print(f"the string is {string}") 
+        else:
+            raise Exception("the argument should be str and it should have more than 5 characters")
         return param(string)
     return wrapped
     
@@ -8,10 +11,8 @@ def my_decorator(param):
 
 @my_decorator
 def checkstring(string):
-    if type(string)==str and len(string)>5:
-        print(f"the string is{string}")
-        return string
-    raise Exception("the argument should be str and it should have more than 5 characters")
+    print("check the string")
+    
 
 checkstring("saraaaa")
 
